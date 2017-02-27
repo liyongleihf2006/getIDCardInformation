@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取身份证信息(省市区、出生年月日、性别)</title>
+</head>
+<body>
+    <h4>获取身份证信息(省市区、出生年月日、性别)</h4>
+    <label for="IDCard">请输入身份证(15位或18位)：</label>
+    <input id="IDCard" value="370305198802224020">
+    <button id="commit">获取信息</button><br/>
+    <span>获取的json：</span><textarea id="format" style="width:100%"></textarea>
+    <dl style="color: green">
+        <dt>使用方式:</dt>
+        <dd>1.引入getIDCardInformation.js</dd>
+        <dd>2.调用getIDCardInformation(IDCard)方法</dd>
+    </dl>
+    <div style="color:red">不负责验证身份证正确与否</div>
+    <div style="color:red">截止2016-08-09行政区划是正确的,查看最新的新政区划代码请访问:<a href="http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/201608/t20160809_1386477.html" target="_blank">最新县及县以上行政区划代码</a></div>
+    <script src="getIDCardInformation.js"></script>
+    <script>
+        document.querySelector("#commit").addEventListener("click",function(){
+           document.querySelector("#format").value=JSON.stringify(getIDCardInformation(document.querySelector("#IDCard").value));
+            document.querySelector("#format").focus();
+        });
+    </script>
+</body>
+</html>
